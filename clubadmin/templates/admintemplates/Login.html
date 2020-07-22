@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotract</title>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- JavaScript -->
+    <script src="{% static 'assets/js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static '/assets/css/bootstrap.min.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static '/assets/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/css/responsive.css' %}">
+</head>
+
+<body>
+    <div class="container-fluid page_login">
+        <div class="row">
+            <div class="col-lg-8 d-flex align-items-center">
+                <div class="logo_des text-center w-100">
+                    <img src="{% static 'assets/img/LOGO.png' %}" alt="Logo">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 d-flex align-items-center col_form">
+                <form class="form-md w-100" id="login-form" method="POST" action="{% url 'adminhome'%}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input id="form_name1" name='Username' class="floating_input" required autofocus>
+                        <label for="form_name1">Username</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="form_name2" name='Password' class="floating_input" type="password" required>
+                        <label for="form_name2">Password</label>
+                    </div>
+                    {% for message in messages %}
+                    <p id='messages'>{{message}}</p>
+                    {% endfor %}
+                    <a href="#">Forgot Password?</a>
+                    <button type="submit" class="btn btn_login">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30.4" height="21.376" viewBox="0 0 30.4 21.376">
+                            <path
+                                d="M20.471,5a1.078,1.078,0,0,0-1.532,1.517l7.768,7.768H1.073A1.067,1.067,0,0,0,0,15.354a1.079,1.079,0,0,0,1.073,1.088H26.707L18.939,24.2a1.1,1.1,0,0,0,0,1.532,1.073,1.073,0,0,0,1.532,0l9.607-9.607a1.055,1.055,0,0,0,0-1.517Z"
+                                transform="translate(0 -4.674)" fill="#fff" /></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

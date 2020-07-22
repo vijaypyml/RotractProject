@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotract</title>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- JavaScript -->
+    <script src="{% static 'assets/js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static '/assets/css/bootstrap.min.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static '/assets/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/css/responsive.css' %}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="sidebar">
+            <div class="user_profile">
+                <span class="first_letter">J</span>
+                <h6 class="user_name">James Alert</h6>
+                <p class="ClubID">CLUB#301</p>
+            </div>
+            <ul class="list-unstyled nav_menu">
+                <li class="nav_list">
+                    <a class="active" href="#">Clubs</a>
+                </li>
+                <li class="nav_list">
+                    <a href="#">Projects</a>
+                </li>
+            </ul>
+            <form class="form-md w-100" id="logout" action="{% url 'logout'%}">
+            <button class="btn btn_logout">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20.146" viewBox="0 0 20 20.146">
+                    <g transform="translate(-0.089)" opacity="0.5">
+                        <path
+                            d="M8.528,9.366v-7.8a1.561,1.561,0,1,1,3.122,0v7.8a1.561,1.561,0,1,1-3.122,0Zm7.748-7.077a1.171,1.171,0,0,0-1.45,1.839,7.659,7.659,0,1,1-9.477,0A1.171,1.171,0,1,0,3.9,2.291a10,10,0,1,0,12.377,0Z"
+                            transform="translate(0)" fill="#dda900" />
+                    </g>
+                </svg>
+            </button>
+        </form>
+        </nav>
+        <div class="page_content">
+            <header class="text-center">
+                <img src="{% static 'assets/img/LOGO.png' %}" alt="Logo">
+            </header>
+            <div class="page_content_wrapper">
+                <div class="page_title">
+                    <h1>Clubs</h1>
+                    {% for message in messages %}
+                    <p id='messages'>{{message}}</p>
+                    {% endfor %}
+                    <form class="" id="register-form" action="{% url 'adminhome'%}">
+                        <button class="btn btn_title" name='BackNav' value='Back'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17.835" height="12.54"
+                                viewBox="0 0 17.835 12.54">
+                                <path
+                                    d="M12.01,4.863a.632.632,0,0,0-.9.89l4.558,4.558H.629A.626.626,0,0,0,0,10.94a.633.633,0,0,0,.629.638H15.668l-4.558,4.549a.645.645,0,0,0,0,.9.63.63,0,0,0,.9,0l5.636-5.636a.619.619,0,0,0,0-.89Z"
+                                    transform="translate(17.835 17.214) rotate(180)" fill="#3f3d56" /></svg>
+                            Back
+                        </button>
+                    </form>
+                </div>
+                <form class="" id="register-form" method="POST" action="{% url 'clubregister'%}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name1" name='ClubName' class="floating_input" type="text" required autofocus>
+                                <label for="form_name1">Club Name</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name2"  name='ClubID'  class="floating_input" type="text" required>
+                                <label for="form_name2">Club ID</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name3"  name='Group'  class="floating_input" type="text" required>
+                                <label for="form_name3">Group</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name4"  name='Sponsoring'  class="floating_input" type="text" required>
+                                <label for="form_name4">Sponsoring</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name5"  name='President_Name'  class="floating_input" type="text" required>
+                                <label for="form_name5">President's Name</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name6"  name='President_Mail'  class="floating_input" type="text" required>
+                                <label for="form_name6">President's Mail</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name7" name='Secretary_Name'  class="floating_input" type="text" required>
+                                <label for="form_name7">Secretary's Name</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name8"  name='Secretary_Mail'  class="floating_input" type="text" required>
+                                <label for="form_name8">Secretary's Mail</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name9"  name='Username'  class="floating_input" type="text" required>
+                                <label for="form_name9">Username</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name10"  name='Password'  class="floating_input" type="text" required>
+                                <label for="form_name10">Password</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name11"  name='Sponsoring_Mail'  class="floating_input" type="text" required>
+                                <label for="form_name11">Sponsoring Mail</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name12"  name='Group_Mail'  class="floating_input" type="text" required>
+                                <label for="form_name12">Group Mail</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input id="form_name13"   name='District_Mail' class="floating_input" type="text" required>
+                                <label for="form_name13">District Mail</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn_secondary btn_submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

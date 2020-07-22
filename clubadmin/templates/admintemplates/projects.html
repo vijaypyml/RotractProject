@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rotract</title>
+        <!-- Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+        <!-- JavaScript -->
+        <script src="{% static 'assets/js/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/js/custom.js' %}"></script>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static '/assets/css/bootstrap.min.css' %}">
+    
+        
+        <link rel="stylesheet" href="{% static '/assets/css/custom.css' %}">
+        <link rel="stylesheet" href="{% static '/assets/css/responsive.css' %}">
+    </head>
+
+<body>
+    <div class="wrapper">
+        <nav class="sidebar">
+            <div class="user_profile">
+                <span class="first_letter">J</span>
+                <h6 class="user_name">James Alert</h6>
+                <p class="ClubID">CLUB#301</p>
+            </div>
+            <ul class="list-unstyled nav_menu">
+                <li class="nav_list">
+                    <a href="#" class="active">Projects</a>
+                </li>
+                <li class="nav_list">
+                    <a href="{% url 'meetinghome'%}">Meetings</a>
+                </li>
+                <li class="nav_list">
+                    <a href="{% url 'membershiphome'%}">Membership</a>
+                </li>
+            </ul>
+            <form class="form-md w-100" id="logout" action="{% url 'logout'%}">
+            <button class="btn btn_logout" title="Logout" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20.146" viewBox="0 0 20 20.146">
+                    <g transform="translate(-0.089)" opacity="0.5">
+                        <path
+                            d="M8.528,9.366v-7.8a1.561,1.561,0,1,1,3.122,0v7.8a1.561,1.561,0,1,1-3.122,0Zm7.748-7.077a1.171,1.171,0,0,0-1.45,1.839,7.659,7.659,0,1,1-9.477,0A1.171,1.171,0,1,0,3.9,2.291a10,10,0,1,0,12.377,0Z"
+                            transform="translate(0)" fill="#dda900" />
+                    </g>
+                </svg>
+            </button>
+            </form>
+        </nav>
+        <div class="page_content">
+            <header class="text-center">
+                <img src="{% static 'assets/img/LOGO.png' %}" alt="Logo">
+            </header>
+            <div class="page_content_wrapper">
+                <div class="page_title">
+                    <h1>Projects</h1>
+                    <div class="btn btn_title_grp d-flex align-items-center">
+                    <form class="form-md w-100" id="" action="{% url 'projectreport' %}">
+                        <button class="btn btn_title" name="dropdown_report" type="submit" value="multiple">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M236,107.335a.667.667,0,1,1-.667-.667A.667.667,0,0,1,236,107.335Zm0,0" transform="translate(-227.335 -103.335)" fill="#707070"/><path d="M204.335,198.667a.5.5,0,0,1-.5-.5V193h-.667a.5.5,0,0,1,0-1h1.167a.5.5,0,0,1,.5.5v5.667A.5.5,0,0,1,204.335,198.667Zm0,0" transform="translate(-196.335 -186)" fill="#707070"/><path d="M8,16a8,8,0,1,1,8-8A8.009,8.009,0,0,1,8,16ZM8,1a7,7,0,1,0,7,7A7.008,7.008,0,0,0,8,1ZM8,1" fill="#3F3D56"/><path d="M195.5,374.332h-3a.5.5,0,0,1,0-1h3a.5.5,0,0,1,0,1Zm0,0" transform="translate(-186 -361.665)" fill="#3F3D56"/></svg>
+                            Reports
+                        </button>
+                    </form>
+                    <form class="form-md w-100" id="" action="{% url 'createproject'%}">
+                    
+                        <button class="btn btn_title" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+                                <path
+                                    d="M12.188,5.688H7.313V.813a.812.812,0,1,0-1.625,0V5.688H.813a.812.812,0,1,0,0,1.625H5.688v4.875a.812.812,0,1,0,1.625,0V7.313h4.875a.812.812,0,1,0,0-1.625Z"
+                                    transform="translate(0 -0.001)" fill="#3f3d56" fill-rule="evenodd" /></svg>
+                            Create
+                        </button>
+                    </form>
+                    </div>
+                </div>
+                <table class="table table_conatiner">
+                    <thead>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Venue</th>
+                        <th>Event Chair</th>
+                        <th>Guest/Speaker</th>
+                        <th>Avenues/Others</th>
+                        <th>Short Description</th>
+                        <th>Poster Upload</th>
+                    </thead>
+                    <tbody>
+            
+                        {% for i in projects %}
+                            
+                            
+                            
+                                <tr>
+                                    <td>{{i.ProjectId}}</td>
+                                    <td>{{i.ProjectTitle}}</td>
+                                    <td>{{i.ProjectType}}</td>
+                                    <td>{{i.ProjectDate}}</td>
+                                    <td>{{i.PrjectTime}}</td>
+                                    <td>{{i.Venue}}</td>
+                                    <td>{{i.EventChair}}</td> 
+                                    <td>{{i.Speaker}}</td>                         
+                                    <td>{{i.Avenue}}</td>
+                                    <td>{{i.Description}}</td>
+                                    <td>{{i.Status}}
+                                        <img src="#" alt="Poster">
+                                        <div class="table_btn_group">
+                                            <form class="" action="{% url 'projectreport' %}">
+                                            <button class="btn btn_edit" name="single_report" value="{{i.ProjectId}}" type="submit" title="Report">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M236,107.335a.667.667,0,1,1-.667-.667A.667.667,0,0,1,236,107.335Zm0,0" transform="translate(-227.335 -103.335)" fill="#707070"/><path d="M204.335,198.667a.5.5,0,0,1-.5-.5V193h-.667a.5.5,0,0,1,0-1h1.167a.5.5,0,0,1,.5.5v5.667A.5.5,0,0,1,204.335,198.667Zm0,0" transform="translate(-196.335 -186)" fill="#707070"/><path d="M8,16a8,8,0,1,1,8-8A8.009,8.009,0,0,1,8,16ZM8,1a7,7,0,1,0,7,7A7.008,7.008,0,0,0,8,1ZM8,1" fill="#707070"/><path d="M195.5,374.332h-3a.5.5,0,0,1,0-1h3a.5.5,0,0,1,0,1Zm0,0" transform="translate(-186 -361.665)" fill="#707070"/></svg>
+                                            </button>
+                                        </form>
+                                            <button class="btn btn_edit"  title="Edit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="15.167" height="14.883" viewBox="0 0 15.167 14.883"><g transform="translate(-5.6 -6.9)"><g transform="translate(5.6 6.9)"><path d="M20.313,114.3H6.228a.53.53,0,0,0-.528.528.539.539,0,0,0,.528.528h14.1a.53.53,0,0,0,.528-.528A.542.542,0,0,0,20.313,114.3Z" transform="translate(-5.687 -100.472)" fill="#707070"/><path d="M5.613,16.054,5.6,18.565a.545.545,0,0,0,.154.386.516.516,0,0,0,.373.154l2.5-.013A.516.516,0,0,0,9,18.938l8.626-8.626a.544.544,0,0,0,0-.76l-2.472-2.5a.544.544,0,0,0-.76,0L12.668,8.793l-6.9,6.888A.573.573,0,0,0,5.613,16.054ZM14.78,8.187l1.738,1.738-.978.978L13.8,9.166Zm-8.1,8.1,6.36-6.36,1.738,1.738L8.42,18.011l-1.751.013Z" transform="translate(-5.6 -6.9)" fill="#707070"/></g></g></svg>
+                                            </button>
+                                            <button class="btn btn_delete" title="Delete">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15" viewBox="0 0 15 15"><defs><clipPath id="a"><rect width="15" height="15" transform="translate(856 186)" fill="#707070"/></clipPath></defs><g transform="translate(-856 -186)" clip-path="url(#a)"><g transform="translate(856 186)"><path d="M9.844,13.125a.469.469,0,0,0,.469-.469V7.031a.469.469,0,1,0-.937,0v5.625A.469.469,0,0,0,9.844,13.125Zm2.812-11.25H9.844V.938A.937.937,0,0,0,8.906,0H6.094a.937.937,0,0,0-.938.938v.938H2.344a.937.937,0,0,0-.938.938V3.75a.938.938,0,0,0,.938.938v8.438A1.875,1.875,0,0,0,4.219,15h6.563a1.875,1.875,0,0,0,1.875-1.875V4.688a.938.938,0,0,0,.938-.938V2.812A.937.937,0,0,0,12.656,1.875ZM6.094,1.406A.469.469,0,0,1,6.562.937H8.438a.469.469,0,0,1,.469.469v.469H6.094Zm5.625,11.719a.938.938,0,0,1-.937.937H4.219a.938.938,0,0,1-.938-.937V4.688h8.438Zm.469-9.375H2.812a.469.469,0,0,1,0-.938h9.375a.469.469,0,0,1,0,.938ZM5.156,13.125a.469.469,0,0,0,.469-.469V7.031a.469.469,0,1,0-.938,0v5.625A.469.469,0,0,0,5.156,13.125Zm2.344,0a.469.469,0,0,0,.469-.469V7.031a.469.469,0,1,0-.938,0v5.625A.469.469,0,0,0,7.5,13.125Z" fill="#707070"/></g></g></svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
